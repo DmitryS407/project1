@@ -1,6 +1,6 @@
 <?
-$PERM["kabinet-prodavtsa"]["2"]="D";
-$PERM["kabinet-prodavtsa"]["6"]="D";
+$PERM["kabinet-prodavtsa"]["G2"]="R";
+$PERM["kabinet-prodavtsa"]["G6"]="X";
 $PERM["kabinet-pokupatelya"]["7"]="D";
 $PERM["search"]["5"]="W";
 $PERM["products"]["5"]="W";

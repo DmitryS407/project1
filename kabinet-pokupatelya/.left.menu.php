@@ -5,7 +5,7 @@ $aMenuLinks = Array(
 		"/kabinet-pokupatelya/izbrannoe/", 
 		Array(), 
 		Array(), 
-		"CSite::InGroup(array(6))" 
+		"CSite::InGroup(array(1,3,4,6))" 
 	)
 );
 ?>
