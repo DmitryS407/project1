@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Мебельная компания");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
-	"",
+	".default",
 	Array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -17,6 +17,7 @@ $APPLICATION->SetTitle("Мебельная компания");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
+		"COMPONENT_TEMPLATE" => ".default",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
@@ -24,7 +25,7 @@ $APPLICATION->SetTitle("Мебельная компания");
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array("",""),
+		"FIELD_CODE" => array(0=>"",1=>"",),
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "2",
@@ -43,7 +44,7 @@ $APPLICATION->SetTitle("Мебельная компания");
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array("",""),
+		"PROPERTY_CODE" => array(0=>"",1=>"",),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "Y",
@@ -59,41 +60,38 @@ $APPLICATION->SetTitle("Мебельная компания");
 	)
 );?><br>
  <br>
+ <br>
  <?$APPLICATION->IncludeComponent(
-	"bitrix:news.line", 
-	".default", 
-	array(
+	"bitrix:news.line",
+	".default",
+	Array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "300",
 		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => ".default",
 		"DETAIL_URL" => "",
-		"FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"IBLOCKS" => array(
-			0 => "2",
-		),
+		"FIELD_CODE" => array(0=>"",1=>"",),
+		"IBLOCKS" => array(0=>"2",),
 		"IBLOCK_TYPE" => "news",
 		"NEWS_COUNT" => "9",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
-		"SORT_ORDER2" => "ASC",
-		"COMPONENT_TEMPLATE" => ".default"
-	),
-	false
+		"SORT_ORDER2" => "ASC"
+	)
 );?><br>
  <br>
-<?$APPLICATION->IncludeComponent(
-	"bitrix:main.include", 
-	".default", 
-	array(
+ <br>
+ <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	".default",
+	Array(
 		"AREA_FILE_SHOW" => "page",
 		"AREA_FILE_SUFFIX" => "inc",
-		"EDIT_TEMPLATE" => "",
-		"COMPONENT_TEMPLATE" => ".default"
-	),
-	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+		"COMPONENT_TEMPLATE" => ".default",
+		"EDIT_TEMPLATE" => ""
+	)
+);?><br>
+ <br>
+ <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

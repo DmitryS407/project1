@@ -6,8 +6,8 @@ $APPLICATION->SetTitle("Вакансии");
 	".default", 
 	array(
 		"COMPONENT_TEMPLATE" => ".default",
-		"IBLOCK_TYPE" => "news",
-		"IBLOCK_ID" => "2",
+		"IBLOCK_TYPE" => "vacancies",
+		"IBLOCK_ID" => "3",
 		"NEWS_COUNT" => "20",
 		"USE_SEARCH" => "N",
 		"USE_RSS" => "N",
