@@ -1,7 +1,43 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Мебельная компания");
-?><?$APPLICATION->IncludeComponent(
+?><br>
+ <br>
+ <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"bottom_menu", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"COMPONENT_TEMPLATE" => "bottom_menu",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "3",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "top",
+		"USE_EXT" => "N"
+	),
+	false
+);?><?$APPLICATION->IncludeComponent("bitrix:menu", "bottom_menu", Array(
+	"ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+		"CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+		"DELAY" => "N",	// Откладывать выполнение шаблона меню
+		"MAX_LEVEL" => "3",	// Уровень вложенности меню
+		"MENU_CACHE_GET_VARS" => array(	// Значимые переменные запроса
+			0 => "",
+		),
+		"MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+		"MENU_CACHE_TYPE" => "N",	// Тип кеширования
+		"MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+		"ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+		"USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+	),
+	false
+);?><br>
+ <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	".default",
 	Array(
@@ -14,8 +50,8 @@ $APPLICATION->SetTitle("Мебельная компания");
 		"AJAX_OPTION_STYLE" => "Y",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "604800",
+		"CACHE_TYPE" => "Y",
 		"CHECK_DATES" => "Y",
 		"COMPONENT_TEMPLATE" => ".default",
 		"DETAIL_URL" => "",
@@ -33,7 +69,7 @@ $APPLICATION->SetTitle("Мебельная компания");
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"MESSAGE_404" => "",
-		"NEWS_COUNT" => "20",
+		"NEWS_COUNT" => "3",
 		"PAGER_BASE_LINK_ENABLE" => "N",
 		"PAGER_DESC_NUMBERING" => "N",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
@@ -60,29 +96,62 @@ $APPLICATION->SetTitle("Мебельная компания");
 	)
 );?><br>
  <br>
- <br>
  <?$APPLICATION->IncludeComponent(
 	"bitrix:news.line",
 	".default",
 	Array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "300",
+		"CACHE_TIME" => "172800",
 		"CACHE_TYPE" => "A",
 		"COMPONENT_TEMPLATE" => ".default",
 		"DETAIL_URL" => "",
 		"FIELD_CODE" => array(0=>"",1=>"",),
-		"IBLOCKS" => array(0=>"2",),
-		"IBLOCK_TYPE" => "news",
+		"IBLOCKS" => array(),
+		"IBLOCK_TYPE" => "advert",
 		"NEWS_COUNT" => "9",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC"
 	)
+);?><?$APPLICATION->IncludeComponent(
+	"bitrix:news.line",
+	"",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "300",
+		"CACHE_TYPE" => "A",
+		"DETAIL_URL" => "",
+		"FIELD_CODE" => array("",""),
+		"IBLOCKS" => array("5"),
+		"IBLOCK_TYPE" => "services",
+		"NEWS_COUNT" => "6",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC"
+	)
+);?><?$APPLICATION->IncludeComponent(
+	"bitrix:news.line",
+	"",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "300",
+		"CACHE_TYPE" => "A",
+		"DETAIL_URL" => "",
+		"FIELD_CODE" => array("",""),
+		"IBLOCKS" => array(),
+		"IBLOCK_TYPE" => "news",
+		"NEWS_COUNT" => "3",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC"
+	)
 );?><br>
- <br>
- <br>
  <?$APPLICATION->IncludeComponent(
 	"bitrix:main.include",
 	".default",
@@ -92,6 +161,392 @@ $APPLICATION->SetTitle("Мебельная компания");
 		"COMPONENT_TEMPLATE" => ".default",
 		"EDIT_TEMPLATE" => ""
 	)
-);?><br>
+);?> <?php if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
+<div class="slide-one-item home-slider owl-carousel">
+	<div class="site-blocks-cover" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+		<div class="text">
+			<h2>853 S Lucerne Blvd</h2>
+			<p class="location">
+ <span class="property-icon icon-room"></span> Los Angeles, CA 90005
+			</p>
+			<p class="mb-2">
+ <strong>$2,250,500</strong>
+			</p>
+			<p class="mb-0">
+ <a href="#" class="text-uppercase small letter-spacing-1 font-weight-bold">More Details</a>
+			</p>
+		</div>
+	</div>
+	<div class="site-blocks-cover" style="background-image: url(images/hero_bg_3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+		<div class="text">
+			<h2>625 S. Berendo St</h2>
+			<p class="location">
+ <span class="property-icon icon-room"></span>607 Los Angeles, CA 90005
+			</p>
+			<p class="mb-2">
+ <strong>$2,250,500</strong>
+			</p>
+			<p class="mb-0">
+ <a href="#" class="text-uppercase small letter-spacing-1 font-weight-bold">More Details</a>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+				<div class="feature d-flex align-items-start">
+ <span class="icon mr-3 flaticon-house"></span>
+					<div class="text">
+						<h2 class="mt-0"><?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => "/include/properties.php"
+	)
+);?>
+						<p>
+						</p>
+ </h2>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+				<div class="feature d-flex align-items-start">
+ <span class="icon mr-3 flaticon-rent"></span>
+					<div class="text">
+						<h2 class="mt-0"><?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => "/include/rent.php"
+	)
+);?>
+						<p>
+						</p>
+ </h2>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+				<div class="feature d-flex align-items-start">
+ <span class="icon mr-3 flaticon-location"></span>
+					<div class="text">
+						<h2 class="mt-0"><?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => "/include/location.php"
+	)
+);?>
+						<p>
+						</p>
+ </h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="site-section site-section-sm bg-light">
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-12">
+				<div class="site-section-title">
+					<h2>New Properties for You</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-5">
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="images/img_1.jpg" class="img-fluid"> </figure>
+				<div class="prop-text">
+					<div class="inner">
+ <span class="price rounded">$1,930,000</span>
+						<h3 class="title">853 S Lucerne Blvd</h3>
+						<p class="location">
+							 Los Angeles, CA 90005
+						</p>
+					</div>
+					<div class="inner d-flex">
+						<div class="col">
+							 Area: <strong>240m<sup>2</sup></strong>
+						</div>
+						<div class="col">
+							 Beds: <strong>2</strong>
+						</div>
+						<div class="col">
+							 Baths: <strong>2</strong>
+						</div>
+						<div class="col">
+							 Garages: <strong>1</strong>
+						</div>
+					</div>
+ <br>
+				</div>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="images/img_2.jpg" class="img-fluid"> </figure>
+				<div class="prop-text">
+					<div class="inner">
+ <span class="price rounded">$2,438,000</span>
+						<h3 class="title">853 S Lucerne Blvd</h3>
+						<p class="location">
+							 Los Angeles, CA 90005
+						</p>
+					</div>
+					<div class="prop-more-info">
+						<div class="inner d-flex">
+							<div class="col">
+								 Area: <strong>240m<sup>2</sup></strong>
+							</div>
+							<div class="col">
+								 Beds: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Baths: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Garages: <strong>1</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="images/img_3.jpg" class="img-fluid"> </figure>
+				<div class="prop-text">
+					<div class="inner">
+ <span class="price rounded">$5,320,000</span>
+						<h3 class="title">853 S Lucerne Blvd</h3>
+						<p class="location">
+							 Los Angeles, CA 90005
+						</p>
+					</div>
+					<div class="prop-more-info">
+						<div class="inner d-flex">
+							<div class="col">
+								 Area: <strong>240m<sup>2</sup></strong>
+							</div>
+							<div class="col">
+								 Beds: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Baths: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Garages: <strong>1</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="images/img_4.jpg" class="img-fluid"> </figure>
+				<div class="prop-text">
+					<div class="inner">
+ <span class="price rounded">$2,350,000</span>
+						<h3 class="title">853 S Lucerne Blvd</h3>
+						<p class="location">
+							 Los Angeles, CA 90005
+						</p>
+					</div>
+					<div class="prop-more-info">
+						<div class="inner d-flex">
+							<div class="col">
+								 Area: <strong>240m<sup>2</sup></strong>
+							</div>
+							<div class="col">
+								 Beds: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Baths: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Garages: <strong>1</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="images/img_5.jpg" class="img-fluid"> </figure>
+				<div class="prop-text">
+					<div class="inner">
+ <span class="price rounded">$1,550,000</span>
+						<h3 class="title">853 S Lucerne Blvd</h3>
+						<p class="location">
+							 Los Angeles, CA 90005
+						</p>
+					</div>
+					<div class="prop-more-info">
+						<div class="inner d-flex">
+							<div class="col">
+								 Area: <strong>240m<sup>2</sup></strong>
+							</div>
+							<div class="col">
+								 Beds: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Baths: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Garages: <strong>1</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="images/img_6.jpg" class="img-fluid"> </figure>
+				<div class="prop-text">
+					<div class="inner">
+ <span class="price rounded">$4,291,000</span>
+						<h3 class="title">853 S Lucerne Blvd</h3>
+						<p class="location">
+							 Los Angeles, CA 90005
+						</p>
+					</div>
+					<div class="prop-more-info">
+						<div class="inner d-flex">
+							<div class="col">
+								 Area: <strong>240m<sup>2</sup></strong>
+							</div>
+							<div class="col">
+								 Beds: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Baths: <strong>2</strong>
+							</div>
+							<div class="col">
+								 Garages: <strong>1</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+ </a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="site-section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-7 text-center mb-5">
+				<div class="site-section-title">
+					<h2>Our Services</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="#" class="service text-center border rounded"> <span class="icon flaticon-house"></span>
+				<h2 class="service-heading">Research Subburbs</h2>
+				<p>
+ <span class="read-more">Learn More</span>
+				</p>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="#" class="service text-center border rounded"> <span class="icon flaticon-sold"></span>
+				<h2 class="service-heading">Sold Houses</h2>
+				<p>
+ <span class="read-more">Learn More</span>
+				</p>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="#" class="service text-center border rounded"> <span class="icon flaticon-camera"></span>
+				<h2 class="service-heading">Security Priority</h2>
+				<p>
+ <span class="read-more">Learn More</span>
+				</p>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="#" class="service text-center border rounded"> <span class="icon flaticon-house"></span>
+				<h2 class="service-heading">Research Subburbs</h2>
+				<p>
+					 Learn More
+				</p>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="#" class="service text-center border rounded"> <span class="icon flaticon-sold"></span>
+				<h2 class="service-heading">Sold Houses</h2>
+				<p>
+ <span class="read-more">Learn More</span>
+				</p>
+ </a>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-4">
+ <a href="#" class="service text-center border rounded"> <span class="icon flaticon-camera"></span>
+				<h2 class="service-heading">Security Priority</h2>
+				<p>
+ <span class="read-more">Learn More</span>
+				</p>
+ </a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="site-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center mb-5">
+			<div class="col-md-7 text-center">
+				<div class="site-section-title">
+					<h2>Our Blog</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
+ <a href="#"><img alt="Image" src="images/img_4.jpg" class="img-fluid"></a>
+				<div class="p-4 bg-white">
+ <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
+					<h2 class="h5 text-black mb-3"><a href="#">When To Sell &amp; How Much To Sell?</a></h2>
+					<p>
+						 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem veniam quae sunt.
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="200">
+ <a href="#"><img alt="Image" src="images/img_2.jpg" class="img-fluid"></a>
+				<div class="p-4 bg-white">
+ <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
+					<h2 class="h5 text-black mb-3"><a href="#">When To Sell &amp; How Much To Sell?</a></h2>
+					<p>
+						 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem veniam quae sunt.
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="300">
+ <a href="#"><img alt="Image" src="images/img_3.jpg" class="img-fluid"></a>
+				<div class="p-4 bg-white">
+ <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
+					<h2 class="h5 text-black mb-3"><a href="#">When To Sell &amp; How Much To Sell?</a></h2>
+					<p>
+						 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem veniam quae sunt.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
  <br>
  <br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

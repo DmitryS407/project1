@@ -1,9 +1,9 @@
 <?php if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
-<!DOCTYPE html>
 <?
 IncludeTemplateLangFile(__FILE__);
 ?>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="<?= LANGUAGE_ID ?>">
 
 <head>
 
@@ -62,17 +62,42 @@ IncludeTemplateLangFile(__FILE__);
           <div class="col-6 col-md-6">
             <p class="mb-0">
               <a href="tel:+210239233922" class="mr-3">
-                <span class="text-black fl-bigmug-line-phone351"></span> <span class="d-none d-md-inline-block ml-2">+2 102 3923 3922</span>
+                <span class="text-black fl-bigmug-line-phone351"></span> <span class="d-none d-md-inline-block ml-2"><?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => "/include/phone.php"
+	)
+);?></span>
               </a>
               <a href="mailto:info@domain.com">
-                <span class="text-black fl-bigmug-line-email64"></span> <span class="d-none d-md-inline-block ml-2">info@domain.com</span>
+                <span class="text-black fl-bigmug-line-email64"></span> <span class="d-none d-md-inline-block ml-2"><?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => "/include/mail.php"
+	)
+);?> </span>
               </a>
             </p>
           </div>
           <div class="col-6 col-md-6 text-right">
-            <a href="#" class="mr-3"><span class="text-black icon-facebook"></span></a>
-            <a href="#" class="mr-3"><span class="text-black icon-twitter"></span></a>
-            <a href="#" class="mr-0"><span class="text-black icon-linkedin"></span></a>
+          <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "",
+		"PATH" => "/include/media.php"
+	)
+);?>
           </div>
         </div>
       </div>
@@ -83,40 +108,36 @@ IncludeTemplateLangFile(__FILE__);
       <div class="container py-1">
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
-            <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong>HomeSpace<span class="text-danger">.</span></strong></a></h1>
+            <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong><?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "page",
+		"AREA_FILE_SUFFIX" => "/include/title.php",
+		"EDIT_TEMPLATE" => ""
+	)
+);?><span class="text-danger">.</span></strong></a></h1>
           </div>
-          <div class="col-4 col-md-4 col-lg-8">
-            <nav class="site-navigation text-right text-md-right" role="navigation">
-              <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
-                <a href="#" class="site-menu-toggle js-menu-toggle text-black">
-                  <span class="icon-menu h3"></span>
-                </a>
-              </div>
-
-              <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li class="has-children">
-                  <a href="properties.html">Properties</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Buy</a></li>
-                    <li><a href="#">Rent</a></li>
-                    <li><a href="#">Lease</a></li>
-                    <li class="has-children">
-                      <a href="#">Menu</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
+          <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"top_multi1", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"COMPONENT_TEMPLATE" => "top_multi1",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "3",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_THEME" => "green",
+		"ROOT_MENU_TYPE" => "top",
+		"USE_EXT" => "N"
+	),
+	false
+);?>
         </div>
       </div>
     </div>
@@ -124,5 +145,3 @@ IncludeTemplateLangFile(__FILE__);
   </div>
 
 </body>
-
-</html>

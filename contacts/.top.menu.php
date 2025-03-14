@@ -1,11 +1,12 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Кабинет продавца", 
-		"/contacts/kabinet-prodavtsa/", 
+		"Главная", 
+		"/index.php", 
 		Array(), 
 		Array(), 
 		"" 
-	)
+	),
+	
 );
 ?>
