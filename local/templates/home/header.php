@@ -14,7 +14,6 @@ IncludeTemplateLangFile(__FILE__);
   <?php
   use Bitrix\Main\Page\Asset;
 
-  
   Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/fonts/icomoon/style.css");
   Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/bootstrap.min.css");
   Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/magnific-popup.css");
@@ -118,23 +117,19 @@ IncludeTemplateLangFile(__FILE__);
 	)
 );?><span class="text-danger">.</span></strong></a></h1>
           </div>
-          <?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"top_multi1", 
-	array(
-		"ALLOW_MULTI_SELECT" => "N",
-		"CHILD_MENU_TYPE" => "left",
-		"COMPONENT_TEMPLATE" => "top_multi1",
-		"DELAY" => "N",
-		"MAX_LEVEL" => "3",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_USE_GROUPS" => "Y",
+          <?$APPLICATION->IncludeComponent("bitrix:menu", "horizontal_multilevel2", Array(
+	"ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+		"CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+		"COMPONENT_TEMPLATE" => "horizontal_multilevel",
+		"DELAY" => "N",	// Откладывать выполнение шаблона меню
+		"MAX_LEVEL" => "3",	// Уровень вложенности меню
+		"MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+		"MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+		"MENU_CACHE_TYPE" => "N",	// Тип кеширования
+		"MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
 		"MENU_THEME" => "green",
-		"ROOT_MENU_TYPE" => "top",
-		"USE_EXT" => "N"
+		"ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+		"USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
 	),
 	false
 );?>
@@ -144,4 +139,3 @@ IncludeTemplateLangFile(__FILE__);
 
   </div>
 
-</body>

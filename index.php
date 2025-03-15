@@ -3,40 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Мебельная компания");
 ?><br>
  <br>
- <?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"bottom_menu", 
-	array(
-		"ALLOW_MULTI_SELECT" => "N",
-		"CHILD_MENU_TYPE" => "left",
-		"COMPONENT_TEMPLATE" => "bottom_menu",
-		"DELAY" => "N",
-		"MAX_LEVEL" => "3",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"ROOT_MENU_TYPE" => "top",
-		"USE_EXT" => "N"
-	),
-	false
-);?><?$APPLICATION->IncludeComponent("bitrix:menu", "bottom_menu", Array(
-	"ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
-		"CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
-		"DELAY" => "N",	// Откладывать выполнение шаблона меню
-		"MAX_LEVEL" => "3",	// Уровень вложенности меню
-		"MENU_CACHE_GET_VARS" => array(	// Значимые переменные запроса
-			0 => "",
-		),
-		"MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
-		"MENU_CACHE_TYPE" => "N",	// Тип кеширования
-		"MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
-		"ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
-		"USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
-	),
-	false
-);?><br>
+ <br>
  <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	".default",
@@ -133,24 +100,25 @@ $APPLICATION->SetTitle("Мебельная компания");
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC"
 	)
-);?><?$APPLICATION->IncludeComponent(
-	"bitrix:news.line",
-	"",
-	Array(
-		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "300",
-		"CACHE_TYPE" => "A",
-		"DETAIL_URL" => "",
-		"FIELD_CODE" => array("",""),
-		"IBLOCKS" => array(),
-		"IBLOCK_TYPE" => "news",
-		"NEWS_COUNT" => "3",
-		"SORT_BY1" => "ACTIVE_FROM",
-		"SORT_BY2" => "SORT",
-		"SORT_ORDER1" => "DESC",
-		"SORT_ORDER2" => "ASC"
-	)
+);?><?$APPLICATION->IncludeComponent("bitrix:news.line", "slider", Array(
+	"ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
+		"CACHE_GROUPS" => "Y",	// Учитывать права доступа
+		"CACHE_TIME" => "300",	// Время кеширования (сек.)
+		"CACHE_TYPE" => "A",	// Тип кеширования
+		"DETAIL_URL" => "",	// URL, ведущий на страницу с содержимым элемента раздела
+		"FIELD_CODE" => array(	// Поля
+			0 => "",
+			1 => "",
+		),
+		"IBLOCKS" => "",	// Код информационного блока
+		"IBLOCK_TYPE" => "news",	// Тип информационного блока
+		"NEWS_COUNT" => "3",	// Количество новостей на странице
+		"SORT_BY1" => "ACTIVE_FROM",	// Поле для первой сортировки новостей
+		"SORT_BY2" => "SORT",	// Поле для второй сортировки новостей
+		"SORT_ORDER1" => "DESC",	// Направление для первой сортировки новостей
+		"SORT_ORDER2" => "ASC",	// Направление для второй сортировки новостей
+	),
+	false
 );?><br>
  <?$APPLICATION->IncludeComponent(
 	"bitrix:main.include",
